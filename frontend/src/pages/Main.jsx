@@ -168,18 +168,14 @@ const Main = () => {
                   delay: i * 0.2,
                 }}
               >
-                <img
-                  src="src/assets/bini-logo.webp"
-                  alt=""
-                  className={`w-32 h-32 opacity-${30 - i * 10}`}
-                />
+                <div className="text-7xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-400 to-pink-300 opacity-30">
+                  BINI
+                </div>
               </motion.div>
             ))}
 
-            {/* Main logo */}
-            <motion.img
-              src="src/assets/bini-logo.webp"
-              alt="Logo"
+            {/* Main logo text */}
+            <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{
                 scale: 1,
@@ -195,8 +191,20 @@ const Main = () => {
                   ease: "easeInOut",
                 },
               }}
-              className="w-32 h-32 relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-            />
+              className="relative z-10"
+            >
+              <div className="text-7xl font-black tracking-widest relative">
+                <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-400 to-pink-300 blur-lg">
+                  BINI
+                </span>
+                <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-pink-200 via-purple-300 to-pink-200">
+                  BINI
+                </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-pink-100 to-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+                  BINI
+                </span>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Creator Credit */}
