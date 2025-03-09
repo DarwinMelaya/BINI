@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Discography = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [showSpotify, setShowSpotify] = useState(false);
 
   const albums = [
     {
@@ -206,6 +207,7 @@ const Discography = () => {
         {/* Updated More Music button */}
         <div className="text-center mt-6">
           <motion.button
+            onClick={() => setShowSpotify(!showSpotify)}
             whileHover={{
               scale: 1.05,
               boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
@@ -213,9 +215,33 @@ const Discography = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-gradient-to-r from-[#7DD1D8] to-[#6BC1C8] text-white px-8 py-2 rounded-full text-base font-semibold transition-all hover:opacity-90 shadow-lg"
           >
-            More Music
+            {showSpotify ? "Hide Music" : "More Music"}
           </motion.button>
         </div>
+
+        {/* Add Spotify iframe */}
+        <AnimatePresence>
+          {showSpotify && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mt-8"
+            >
+              <iframe
+                style={{ borderRadius: "12px" }}
+                src="https://open.spotify.com/embed/artist/7tNO3vJC9zlHy2IJOx34ga?utm_source=generator"
+                width="100%"
+                height="352"
+                frameBorder="0"
+                allowFullScreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );
